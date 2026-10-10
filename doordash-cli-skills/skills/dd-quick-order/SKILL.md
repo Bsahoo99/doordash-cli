@@ -39,6 +39,12 @@ it or start fresh (`dd-cli cart delete --cart-uuid <id>`).
 
 ### 3. Find the store and build the cart
 
+Get `<default_address_id>` from `dd-cli --json-output address list --intent
+"..."` (see the output note under Guardrails — an account can have many saved
+addresses). The address marked as default isn't necessarily where the person
+is today: if it isn't labelled Home or Work, confirm it with them in one
+sentence before searching.
+
 ```
 dd-cli search -q "chicken nuggets" --address-id <default_address_id> --limit 5 --intent "..."
 dd-cli menu --store-id <store_id> --intent "..."
