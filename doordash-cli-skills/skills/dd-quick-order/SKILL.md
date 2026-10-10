@@ -110,7 +110,11 @@ don't declare success straight off `submit`'s return.
 - **Don't over-fetch.** For a single obvious item, one `search` +
   one `menu` call is normally enough — no need to explore multiple
   restaurants unless the request is ambiguous ("get me some nuggets" with no
-  restaurant named and multiple nearby options).
+  restaurant named and multiple nearby options). If answering would take
+  cart-by-cart probing across more than a few stores, or the CLI can't
+  express the constraint (a delivery-by time, dietary needs, a price cap),
+  stop: report the candidates you have, say what you couldn't check, and ask
+  before continuing.
 - **Keep large output out of the conversation.** `menu` responses (and an
   `address list` with many entries) can be very large. Write
   `--json-output` results to a scratch file, look at the top-level shape
