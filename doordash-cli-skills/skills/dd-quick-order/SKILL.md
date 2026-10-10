@@ -105,6 +105,11 @@ don't declare success straight off `submit`'s return.
   one `menu` call is normally enough — no need to explore multiple
   restaurants unless the request is ambiguous ("get me some nuggets" with no
   restaurant named and multiple nearby options).
+- **Keep large output out of the conversation.** `menu` responses (and an
+  `address list` with many entries) can be very large. Write
+  `--json-output` results to a scratch file, look at the top-level shape
+  first (e.g. `jq 'keys' file.json`), then pull out only the fields you need
+  — never print a full menu or address book into the chat.
 - **Age-restricted items** (alcohol, etc.) can't complete through agentic
   checkout — if `order submit` returns
   `error_reason=AGENTIC_RESTRICTED_ITEM_NOT_ALLOWED`, tell the person and
