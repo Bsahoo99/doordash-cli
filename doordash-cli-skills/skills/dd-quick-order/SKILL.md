@@ -117,9 +117,10 @@ don't declare success straight off `submit`'s return.
   before continuing.
 - **Keep large output out of the conversation.** `menu` responses (and an
   `address list` with many entries) can be very large. Write
-  `--json-output` results to a scratch file, look at the top-level shape
-  first (e.g. `jq 'keys' file.json`), then pull out only the fields you need
-  — never print a full menu or address book into the chat.
+  `--json-output` results to a scratch file, look at the shape first
+  (`jq 'keys' file.json` — the result is wrapped in an envelope, and the
+  parsed payload is under `structuredContent`), then pull out only the
+  fields you need — never print a full menu or address book into the chat.
 - **Age-restricted items** (alcohol, etc.) can't complete through agentic
   checkout — if `order submit` returns
   `error_reason=AGENTIC_RESTRICTED_ITEM_NOT_ALLOWED`, tell the person and
